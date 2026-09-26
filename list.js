@@ -1,5 +1,3 @@
-const exercisesCollection = db.collection("exercises");
-
 const exerciseList = document.getElementById("exercise-list");
 const exerciseSearch = document.getElementById("exercise-search");
 
@@ -175,7 +173,7 @@ async function loadExercises() {
     `;
 
     try {
-        const snapshot = await exercisesCollection
+        const snapshot = await db.collection("exercises")
             .orderBy("name")
             .get();
 
@@ -264,7 +262,7 @@ async function deleteExercise(exercise) {
     }
 
     try {
-        await exercisesCollection
+        await db.collection("exercises")
             .doc(exercise.documentId)
             .delete();
 

@@ -21,8 +21,6 @@ const btnCancelExercise = document.getElementById("btn-cancel-exercise");
 const btnSaveExercise = document.getElementById("btn-save-exercise");
 const btnCloseExercise = document.getElementById("btn-close-exercise");
 
-const exercisesCollection = db.collection("exercises");
-
 let exerciseModalMode = "add";
 
 /* =========================================================
@@ -278,7 +276,7 @@ async function saveExercise() {
 
     try {
         if (exerciseModalMode === "add") {
-            await exercisesCollection.add({
+            await db.collection("exercises").add({
                 ...data,
                 createdAt: firebase.firestore.FieldValue.serverTimestamp(),
                 updatedAt: firebase.firestore.FieldValue.serverTimestamp()
@@ -297,7 +295,7 @@ async function saveExercise() {
                 );
             }
 
-            await exercisesCollection
+            await db.collection("exercises")
                 .doc(documentId)
                 .update({
                     ...data,
@@ -338,7 +336,7 @@ async function openExerciseById(documentId, mode) {
     }
 
     try {
-        const document = await exercisesCollection
+        const document = await db.collection("exercises")
             .doc(documentId)
             .get();
 
