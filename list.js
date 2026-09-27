@@ -44,28 +44,20 @@ function renderExercises(data) {
            MAIN VALUE
            ------------------------------------------------- */
 
-        const main = document.createElement("div");
-        main.className = "list-item-main";
-
         const name = document.createElement("span");
         name.className = "list-item-main-value";
         name.textContent = exercise.name || "Sem nome";
 
-        main.appendChild(name);
-
         /* Prescription type */
         if (exercise.externalLoad) {
-            const prescriptionType = document.createElement("span");
-            prescriptionType.className = "list-item-secondary-value";
 
-            prescriptionType.textContent =
+            name.textContent += " | "
                 prescriptionTypeLabels[exercise.externalLoad]
                 || exercise.externalLoad;
 
-            main.appendChild(prescriptionType);
         }
 
-        item.appendChild(main);
+        item.appendChild(name);
 
 
         /* -------------------------------------------------
