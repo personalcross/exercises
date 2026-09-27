@@ -80,7 +80,7 @@ function renderExercises(data) {
         if (exercise.url) {
             const playButton = document.createElement("button");
             playButton.type = "button";
-            playButton.className = "list-action-button";
+            playButton.className = "list-item-action";
             playButton.dataset.action = "play";
             playButton.dataset.id = exercise.documentId;
             playButton.title = "Assistir vídeo";
@@ -102,7 +102,7 @@ function renderExercises(data) {
         /* View */
         const viewButton = document.createElement("button");
         viewButton.type = "button";
-        viewButton.className = "list-action-button";
+        viewButton.className = "list-item-action";
         viewButton.dataset.action = "view";
         viewButton.dataset.id = exercise.documentId;
         viewButton.title = "Visualizar";
@@ -111,15 +111,19 @@ function renderExercises(data) {
             `Visualizar ${exercise.name || "exercício"}`
         );
 
-        viewButton.textContent = "Ver";
+        const viewImage = document.createElement("img");
+        viewImage.src =
+            "https://personalcross.github.io/assets/store/eye.png";
+        viewImage.alt = "Ver";
 
+        viewButton.appendChild(viewImage);
         actions.appendChild(viewButton);
 
 
         /* Edit */
         const editButton = document.createElement("button");
         editButton.type = "button";
-        editButton.className = "list-action-button";
+        editButton.className = "list-item-action";
         editButton.dataset.action = "edit";
         editButton.dataset.id = exercise.documentId;
         editButton.title = "Editar";
@@ -128,8 +132,12 @@ function renderExercises(data) {
             `Editar ${exercise.name || "exercício"}`
         );
 
-        editButton.textContent = "Editar";
+        const editImage = document.createElement("img");
+        editImage.src =
+            "https://personalcross.github.io/assets/store/pencil.png";
+        editImage.alt = "Editar";
 
+        editButton.appendChild(editImage);
         actions.appendChild(editButton);
 
 
@@ -137,7 +145,7 @@ function renderExercises(data) {
         const deleteButton = document.createElement("button");
         deleteButton.type = "button";
         deleteButton.className =
-            "list-action-button list-action-delete";
+            "list-item-action list-action-delete";
 
         deleteButton.dataset.action = "delete";
         deleteButton.dataset.id = exercise.documentId;
