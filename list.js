@@ -51,7 +51,7 @@ function renderExercises(data) {
         /* Prescription type */
         if (exercise.externalLoad) {
 
-            name.textContent += " | "
+            name.textContent += " | " +
                 prescriptionTypeLabels[exercise.externalLoad]
                 || exercise.externalLoad;
 
