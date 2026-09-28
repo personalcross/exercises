@@ -114,8 +114,8 @@ function resetExerciseForm() {
 
     exerciseUrl.value = "";
     exerciseNotes.value = "";
-    exerciseIsActive.value = true;
-    exerciseIsMultijoint.value = true;
+    exerciseIsActive.checked = true;
+    exerciseIsMultijoint.checked = false;
 }
 
 /* =========================================================
@@ -152,8 +152,8 @@ function fillExerciseForm(exercise) {
 
     exerciseUrl.value = exercise.url || "";
     exerciseNotes.value = exercise.notes || "";
-    exerciseIsActive.value = exercise.isActive || true;
-    exerciseIsMultijoint.value = exercise.isMultijoint || true;
+    exerciseIsActive.checked = exercise.isActive === true;
+    exerciseIsMultijoint.checked = exercise.isMultijoint === true;
 
     refreshMaterializeSelects();
     M.updateTextFields();
@@ -225,8 +225,8 @@ function getExerciseFormData() {
         ),
         notes: exerciseNotes.value.trim(),
         url: exerciseUrl.value.trim(),
-        isActive: exerciseIsActive.value,
-        isMultijoint: exerciseIsMultijoint.value
+        isActive: exerciseIsActive.checked,
+        isMultijoint: exerciseIsMultijoint.checked
     };
 }
 
