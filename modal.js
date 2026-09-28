@@ -115,7 +115,7 @@ function resetExerciseForm() {
     exerciseUrl.value = "";
     exerciseNotes.value = "";
     exerciseIsActive.value = true;
-    exerciseIsMultijoint.disabled = true;
+    exerciseIsMultijoint.value = true;
 }
 
 /* =========================================================
@@ -153,7 +153,7 @@ function fillExerciseForm(exercise) {
     exerciseUrl.value = exercise.url || "";
     exerciseNotes.value = exercise.notes || "";
     exerciseIsActive.value = exercise.isActive || true;
-    exerciseIsMultijoint.disabled = exercise.isMultijoint || true;
+    exerciseIsMultijoint.value = exercise.isMultijoint || true;
 
     refreshMaterializeSelects();
     M.updateTextFields();
