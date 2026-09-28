@@ -40,6 +40,10 @@ function renderExercises(data) {
         const item = document.createElement("div");
         item.className = "list-item";
 
+        if (exercise.active !== true) {
+            item.classList.add("inactive");
+        }
+
         /* -------------------------------------------------
            MAIN VALUE
            ------------------------------------------------- */
@@ -173,14 +177,33 @@ async function loadExercises() {
     `;
 
     try {
-        const snapshot = await db.collection("exercises")
-            .orderBy("name")
-            .get();
+        const snapshot = await db.collection("exercises").get();
 
         exercises = snapshot.docs.map(doc => ({
             documentId: doc.id,
             ...doc.data()
         }));
+
+        exercises.sort((a, b) => {
+            
+            // actives first
+            const activeA = a.active === true ? 0 : 1;
+            const activeB = b.active === true ? 0 : 1;
+
+            if (activeA !== activeB) {
+                return activeA - activeB;
+            }
+
+            // alfa order inside groups
+            return (a.name || "").localeCompare(
+                b.name || "",
+                "pt-BR",
+                {
+                    sensitivity: "base"
+                }
+            );
+
+        });
 
         renderExercises(exercises);
 
