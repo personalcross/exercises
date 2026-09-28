@@ -15,6 +15,8 @@ const exerciseEquipment = document.getElementById("exercise-equipment");
 
 const exerciseUrl = document.getElementById("exercise-url");
 const exerciseNotes = document.getElementById("exercise-notes");
+const exerciseIsActive = document.getElementById("exercise-is-active");
+const exerciseIsMultijoint = document.getElementById("exercise-is-multijoint")
 
 const btnAddExercise = document.getElementById("btn-add-exercise");
 const btnCancelExercise = document.getElementById("btn-cancel-exercise");
@@ -52,6 +54,8 @@ function setExerciseModalMode(mode) {
 
     exerciseUrl.disabled = isView;
     exerciseNotes.disabled = isView;
+    exerciseIsActive.disabled = isView;
+    exerciseIsMultijoint.disabled = isView;
 
     // Buttons
     btnSaveExercise.style.display = isView ? "none" : "";
@@ -110,6 +114,8 @@ function resetExerciseForm() {
 
     exerciseUrl.value = "";
     exerciseNotes.value = "";
+    exerciseIsActive.value = true;
+    exerciseIsMultijoint.disabled = true;
 }
 
 /* =========================================================
@@ -146,6 +152,8 @@ function fillExerciseForm(exercise) {
 
     exerciseUrl.value = exercise.url || "";
     exerciseNotes.value = exercise.notes || "";
+    exerciseIsActive.value = exercise.isActive || true;
+    exerciseIsMultijoint.disabled = exercise.isMultijoint || true;
 
     refreshMaterializeSelects();
     M.updateTextFields();
@@ -216,7 +224,9 @@ function getExerciseFormData() {
             exerciseEquipment
         ),
         notes: exerciseNotes.value.trim(),
-        url: exerciseUrl.value.trim()
+        url: exerciseUrl.value.trim(),
+        isActive: exerciseIsActive.value,
+        isMultijoint: exerciseIsMultijoint
     };
 }
 
