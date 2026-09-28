@@ -187,8 +187,8 @@ async function loadExercises() {
         exercises.sort((a, b) => {
             
             // actives first
-            const activeA = a.active === true ? 0 : 1;
-            const activeB = b.active === true ? 0 : 1;
+            const activeA = a.isActive === true ? 0 : 1;
+            const activeB = b.isActive === true ? 0 : 1;
 
             if (activeA !== activeB) {
                 return activeA - activeB;
