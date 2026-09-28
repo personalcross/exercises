@@ -40,7 +40,7 @@ function renderExercises(data) {
         const item = document.createElement("div");
         item.className = "list-item";
 
-        if (exercise.active !== true) {
+        if (exercise.isActive !== true) {
             item.classList.add("inactive");
         }
 
