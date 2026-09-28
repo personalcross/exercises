@@ -226,7 +226,7 @@ function getExerciseFormData() {
         notes: exerciseNotes.value.trim(),
         url: exerciseUrl.value.trim(),
         isActive: exerciseIsActive.value,
-        isMultijoint: exerciseIsMultijoint
+        isMultijoint: exerciseIsMultijoint.value
     };
 }
 
