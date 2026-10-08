@@ -5,6 +5,7 @@ function checkIfAdmin() {
     if (role === 'admin') {
         return true;
     } else {
+        window.location.href = "https://personalcross.github.io/home/";
         return false;
     }
 }
@@ -60,5 +61,8 @@ auth.onAuthStateChanged((user) => {
 const logout = document.querySelector('#btn-logout');
 logout.addEventListener('click', (e) => {
     e.preventDefault();
+    localStorage.removeItem("userRole");
     auth.signOut();
 });
+
+checkIfAdmin();
